@@ -20,8 +20,11 @@ import java.time.Duration;
 @EnableTransactionManagement
 public class CouchbaseConfiguration extends AbstractCouchbaseConfiguration {
 
-    @Autowired
     CouchbaseProperties clusterProperties;
+
+    public CouchbaseConfiguration(CouchbaseProperties clusterProperties) {
+        this.clusterProperties = clusterProperties;
+    }
 
     @Override
     public String getConnectionString() {
