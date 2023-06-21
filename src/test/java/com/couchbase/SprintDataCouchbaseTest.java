@@ -76,6 +76,7 @@ class SprintDataCouchbaseTest {
 
     @Test
     public void testJsonRequest() {
+        createFoos(document_list);
         Map<String, Object> jsonRequest = new HashMap<String, Object>();
         jsonRequest.put("firstname", "Bar");
         jsonRequest.put("lastname", "Foo");
