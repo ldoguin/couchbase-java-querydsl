@@ -284,6 +284,14 @@ class SprintDataCouchbaseTest {
         List<FooView> foos = couchbaseTemplate.findByQuery(Foo.class).as(FooView.class).matching(q).all();
         Assertions.assertEquals(2, foos.size());
     }
-
+    @Test
+    public void writePartialfield() {
+        Foo partialFoo = new Foo();
+        partialFoo.setFirstname("walter");
+        partialFoo = fooRepository.save(partialFoo).block();
+        Assertions.assertEquals("walter", partialFoo.firstname);
+        Assertions.assertEquals(0.0, partialFoo.amount);
+        Assertions.assertNull( partialFoo.lastname);
+    }
 }
 
